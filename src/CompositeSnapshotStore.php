@@ -8,7 +8,6 @@
  * file that was distributed with this source code.
  */
 
-declare(strict_types=1);
 
 namespace Prooph\SnapshotStore;
 
@@ -24,7 +23,7 @@ final class CompositeSnapshotStore implements SnapshotStore
         $this->snapshotStores = $snapshotStores;
     }
 
-    public function get(string $aggregateType, string $aggregateId): ?Snapshot
+    public function get($aggregateType, $aggregateId)
     {
         foreach ($this->snapshotStores as $snapshotStore) {
             $snapshot = $snapshotStore->get($aggregateType, $aggregateId);
@@ -37,14 +36,14 @@ final class CompositeSnapshotStore implements SnapshotStore
         return null;
     }
 
-    public function save(Snapshot ...$snapshots): void
+    public function save(Snapshot ...$snapshots)
     {
         foreach ($this->snapshotStores as $snapshotStore) {
             $snapshotStore->save(...$snapshots);
         }
     }
 
-    public function removeAll(string $aggregateType): void
+    public function removeAll($aggregateType)
     {
         foreach ($this->snapshotStores as $snapshotStore) {
             $snapshotStore->removeAll($aggregateType);

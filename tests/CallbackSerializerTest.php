@@ -8,7 +8,6 @@
  * file that was distributed with this source code.
  */
 
-declare(strict_types=1);
 
 namespace ProophTest\SnapshotStore;
 
@@ -21,7 +20,7 @@ class CallbackSerializerTest extends TestCase
     /**
      * @test
      */
-    public function it_implements_interface(): void
+    public function it_implements_interface()
     {
         $serializer = new CallbackSerializer(null, null);
 
@@ -31,7 +30,7 @@ class CallbackSerializerTest extends TestCase
     /**
      * @test
      */
-    public function it_uses_serializer_by_default(): void
+    public function it_uses_serializer_by_default()
     {
         $serializer = new CallbackSerializer(null, null);
         $before = new \stdClass();
@@ -45,9 +44,9 @@ class CallbackSerializerTest extends TestCase
     /**
      * @test
      */
-    public function it_uses_default_if_only_one_callback_provided_instead_of_two(): void
+    public function it_uses_default_if_only_one_callback_provided_instead_of_two()
     {
-        $serializer = new CallbackSerializer(function ($data): string {
+        $serializer = new CallbackSerializer(function ($data) {
             return (string) ($data * 2);
         }, null);
 
@@ -59,7 +58,7 @@ class CallbackSerializerTest extends TestCase
         $this->assertEquals($before, $after);
 
         $serializer = new CallbackSerializer(null,
-            function (string $data): string {
+            function ($data) {
                 return (string) ($data / 2);
             });
 
@@ -73,11 +72,11 @@ class CallbackSerializerTest extends TestCase
     /**
      * @test
      */
-    public function it_can_use_any_callback(): void
+    public function it_can_use_any_callback()
     {
-        $serializer = new CallbackSerializer(function ($data): string {
+        $serializer = new CallbackSerializer(function ($data) {
             return (string) ($data * 2);
-        }, function (string $data): string {
+        }, function ($data) {
             return (string) ($data / 2);
         });
 

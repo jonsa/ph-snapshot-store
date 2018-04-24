@@ -8,7 +8,6 @@
  * file that was distributed with this source code.
  */
 
-declare(strict_types=1);
 
 namespace Prooph\SnapshotStore;
 
@@ -24,7 +23,7 @@ final class CallbackSerializer implements Serializer
      */
     private $unserializeCallback = 'unserialize';
 
-    public function __construct(?callable $serializeCallback, ?callable $unserializeCallback)
+    public function __construct(callable $serializeCallback = null, callable $unserializeCallback = null)
     {
         if (null !== $serializeCallback && null !== $unserializeCallback) {
             $this->serializeCallback = $serializeCallback;
@@ -36,7 +35,7 @@ final class CallbackSerializer implements Serializer
      * @param object|array $data
      * @return string
      */
-    public function serialize($data): string
+    public function serialize($data)
     {
         return call_user_func($this->serializeCallback, $data);
     }
@@ -45,7 +44,7 @@ final class CallbackSerializer implements Serializer
      * @param string $serialized
      * @return object|array
      */
-    public function unserialize(string $serialized)
+    public function unserialize($serialized)
     {
         return call_user_func($this->unserializeCallback, $serialized);
     }

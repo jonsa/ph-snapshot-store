@@ -8,7 +8,6 @@
  * file that was distributed with this source code.
  */
 
-declare(strict_types=1);
 
 namespace ProophTest\SnapshotStore\Container;
 
@@ -23,7 +22,7 @@ class CompositeSnapshotStoreFactoryTest extends TestCase
     /**
      * @test
      */
-    public function it_creates_composite_snapshot_store(): void
+    public function it_creates_composite_snapshot_store()
     {
         $config['prooph']['composite_snapshot_store']['default'] = [
             'snapshot_store_1',
@@ -48,7 +47,7 @@ class CompositeSnapshotStoreFactoryTest extends TestCase
     /**
      * @test
      */
-    public function it_creates_composite_snapshot_store_via_call_static(): void
+    public function it_creates_composite_snapshot_store_via_call_static()
     {
         $config['prooph']['composite_snapshot_store']['default'] = [
             'snapshot_store_1',
@@ -73,7 +72,7 @@ class CompositeSnapshotStoreFactoryTest extends TestCase
     /**
      * @test
      */
-    public function it_throws_exception_when_invalid_container_given(): void
+    public function it_throws_exception_when_invalid_container_given()
     {
         $this->expectException(\InvalidArgumentException::class);
 

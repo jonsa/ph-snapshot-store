@@ -8,13 +8,12 @@
  * file that was distributed with this source code.
  */
 
-declare(strict_types=1);
 
 namespace Prooph\SnapshotStore;
 
 interface Serializer
 {
-    public function serialize($data): string;
+    public function serialize($data);
 
-    public function unserialize(string $data);
+    public function unserialize($data);
 }

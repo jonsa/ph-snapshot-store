@@ -8,7 +8,6 @@
  * file that was distributed with this source code.
  */
 
-declare(strict_types=1);
 
 namespace ProophTest\SnapshotStore;
 
@@ -21,7 +20,7 @@ class InMemorySnapshotStoreTest extends TestCase
     /**
      * @test
      */
-    public function it_saves_snapshots(): void
+    public function it_saves_snapshots()
     {
         $now = new \DateTimeImmutable();
 
@@ -46,7 +45,7 @@ class InMemorySnapshotStoreTest extends TestCase
     /**
      * @test
      */
-    public function it_saves_multiple_snapshots_and_removes_them(): void
+    public function it_saves_multiple_snapshots_and_removes_them()
     {
         $now = new \DateTimeImmutable();
 

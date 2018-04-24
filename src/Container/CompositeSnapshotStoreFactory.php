@@ -8,7 +8,6 @@
  * file that was distributed with this source code.
  */
 
-declare(strict_types=1);
 
 namespace Prooph\SnapshotStore\Container;
 
@@ -41,7 +40,7 @@ final class CompositeSnapshotStoreFactory implements RequiresConfigId
      *
      * @throws \InvalidArgumentException
      */
-    public static function __callStatic(string $name, array $arguments): CompositeSnapshotStore
+    public static function __callStatic($name, array $arguments)
     {
         if (! isset($arguments[0]) || ! $arguments[0] instanceof ContainerInterface) {
             throw new \InvalidArgumentException(
@@ -52,7 +51,7 @@ final class CompositeSnapshotStoreFactory implements RequiresConfigId
         return (new static($name))->__invoke($arguments[0]);
     }
 
-    public function __invoke(ContainerInterface $container): CompositeSnapshotStore
+    public function __invoke(ContainerInterface $container)
     {
         $config = $container->get('config');
         $config = $this->options($config, $this->configId);
@@ -66,12 +65,12 @@ final class CompositeSnapshotStoreFactory implements RequiresConfigId
         return new CompositeSnapshotStore(...$snapshotStores);
     }
 
-    public function __construct(string $configId = 'default')
+    public function __construct($configId = 'default')
     {
         $this->configId = $configId;
     }
 
-    public function dimensions(): iterable
+    public function dimensions()
     {
         return ['prooph', 'composite_snapshot_store'];
     }

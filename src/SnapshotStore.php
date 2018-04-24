@@ -8,15 +8,14 @@
  * file that was distributed with this source code.
  */
 
-declare(strict_types=1);
 
 namespace Prooph\SnapshotStore;
 
 interface SnapshotStore
 {
-    public function get(string $aggregateType, string $aggregateId): ?Snapshot;
+    public function get($aggregateType, $aggregateId);
 
-    public function save(Snapshot ...$snapshots): void;
+    public function save(Snapshot ...$snapshots);
 
-    public function removeAll(string $aggregateType): void;
+    public function removeAll($aggregateType);
 }

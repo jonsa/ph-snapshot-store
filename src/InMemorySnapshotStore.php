@@ -8,7 +8,6 @@
  * file that was distributed with this source code.
  */
 
-declare(strict_types=1);
 
 namespace Prooph\SnapshotStore;
 
@@ -19,7 +18,7 @@ final class InMemorySnapshotStore implements SnapshotStore
      */
     private $map = [];
 
-    public function get(string $aggregateType, string $aggregateId): ?Snapshot
+    public function get($aggregateType, $aggregateId)
     {
         if (! isset($this->map[$aggregateType][$aggregateId])) {
             return null;
@@ -28,14 +27,14 @@ final class InMemorySnapshotStore implements SnapshotStore
         return $this->map[$aggregateType][$aggregateId];
     }
 
-    public function save(Snapshot ...$snapshots): void
+    public function save(Snapshot ...$snapshots)
     {
         foreach ($snapshots as $snapshot) {
             $this->map[$snapshot->aggregateType()][$snapshot->aggregateId()] = $snapshot;
         }
     }
 
-    public function removeAll(string $aggregateType): void
+    public function removeAll($aggregateType)
     {
         unset($this->map[$aggregateType]);
     }

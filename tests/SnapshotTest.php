@@ -8,7 +8,6 @@
  * file that was distributed with this source code.
  */
 
-declare(strict_types=1);
 
 namespace ProophTest\SnapshotStore;
 
@@ -20,7 +19,7 @@ class SnapshotTest extends TestCase
     /**
      * @test
      */
-    public function it_creates_and_returns_values(): void
+    public function it_creates_and_returns_values()
     {
         $now = new \DateTimeImmutable();
 
@@ -44,7 +43,7 @@ class SnapshotTest extends TestCase
     /**
      * @test
      */
-    public function it_requires_min_length_for_aggregate_type(): void
+    public function it_requires_min_length_for_aggregate_type()
     {
         $this->expectException(\InvalidArgumentException::class);
 
@@ -62,7 +61,7 @@ class SnapshotTest extends TestCase
     /**
      * @test
      */
-    public function it_requires_min_length_for_aggregate_id(): void
+    public function it_requires_min_length_for_aggregate_id()
     {
         $this->expectException(\InvalidArgumentException::class);
 
@@ -80,7 +79,7 @@ class SnapshotTest extends TestCase
     /**
      * @test
      */
-    public function it_requires_min_for_last_version(): void
+    public function it_requires_min_for_last_version()
     {
         $this->expectException(\InvalidArgumentException::class);
 

@@ -8,7 +8,6 @@
  * file that was distributed with this source code.
  */
 
-declare(strict_types=1);
 
 namespace Prooph\SnapshotStore;
 
@@ -43,10 +42,10 @@ final class Snapshot
     private $createdAt;
 
     public function __construct(
-        string $aggregateType,
-        string $aggregateId,
+        $aggregateType,
+        $aggregateId,
         $aggregateRoot,
-        int $lastVersion,
+        $lastVersion,
         DateTimeImmutable $createdAt
     ) {
         Assertion::minLength($aggregateType, 1);
@@ -60,12 +59,12 @@ final class Snapshot
         $this->createdAt = $createdAt;
     }
 
-    public function aggregateType(): string
+    public function aggregateType()
     {
         return $this->aggregateType;
     }
 
-    public function aggregateId(): string
+    public function aggregateId()
     {
         return $this->aggregateId;
     }
@@ -75,12 +74,12 @@ final class Snapshot
         return $this->aggregateRoot;
     }
 
-    public function lastVersion(): int
+    public function lastVersion()
     {
         return $this->lastVersion;
     }
 
-    public function createdAt(): DateTimeImmutable
+    public function createdAt()
     {
         return $this->createdAt;
     }
